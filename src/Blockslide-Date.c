@@ -22,7 +22,7 @@ PBL_APP_INFO(MY_UUID,
 #define LANG_SPANISH 4
 #define LANG_MAX 5
 // Language for the day of the week
-#define LANG_CUR LANG_SPANISH
+#define LANG_CUR LANG_ENGLISH
 
 #define USDATE FALSE
 #define WEEKDAY TRUE
@@ -118,7 +118,7 @@ GRect slotFrame(int i) {
 void updateSlot(digitSlot *slot, GContext *ctx) {
 	int t, tx1, tx2, ty1, ty2, ox, oy;
 	
-	graphics_context_set_fill_color(ctx, GColorBlack);
+	graphics_context_set_fill_color(ctx, GColorWhite);
 	graphics_fill_rect(ctx, GRect(0, 0, slot->layer.bounds.size.w, slot->layer.bounds.size.h), 0, GCornerNone);
 	
 	for (t=0; t<13; t++) {
@@ -141,7 +141,7 @@ void updateSlot(digitSlot *slot, GContext *ctx) {
 			oy = digits[slot->curDigit][t][1]*slot->tileHeight;
 		}
 		
-		graphics_context_set_fill_color(ctx, GColorWhite);
+		graphics_context_set_fill_color(ctx, GColorBlack);
 		graphics_fill_rect(ctx, GRect(ox, oy, slot->tileWidth, slot->tileHeight-1), 0, GCornerNone);
 	}
 }
@@ -264,7 +264,7 @@ void handle_init(AppContextRef ctx) {
 	
 	window_init(&window, "Blockslide");
 	window_stack_push(&window, true /* Animated */);
-	window_set_background_color(&window, GColorBlack);
+	window_set_background_color(&window, GColorWhite);
 	
 	rootLayer = window_get_root_layer(&window);
 	
